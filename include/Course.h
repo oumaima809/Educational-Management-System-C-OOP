@@ -16,16 +16,19 @@ class Course {
         string _code;
         string _name;
         string _teacher;
-        
+        vector<Assignment*>allAssignments;
 
     public:
-    vector<Assignment>allAssignments;
+    
       Course(string code,string name,string teacher);
       Course();
       ~Course();
       string getName();
       string getCode();
       string getTeacher();
+      vector<Assignment*>& getAssignments();
+      void getCourseDetails();
+      
 
 };
 

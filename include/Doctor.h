@@ -14,18 +14,18 @@ class Doctor {
         string _lastName;
         string _email;
         string _password;
-        vector<Course>myCourses;
+        vector<Course*>myCourses;
 
     public:
         Doctor();
         Doctor(string userName ,string firstName ,string lastName , string email ,string password);
         ~Doctor();
-        void createCourse(string code,string name);
+        Course* createCourse(string code,string name);
         void listCourses();
-        //void viewCourse();
+        void viewCourse(Course*);
         //void addTA();
-        void createAssignment(string assignmentQ, Course course);
-        void viewAssignment(Course course);
+        void createAssignment(string assignmentQ, Course* course);
+        void viewAssignment(Course* course);
         //void setGrade();
 
     

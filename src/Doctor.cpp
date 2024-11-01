@@ -1,10 +1,10 @@
 #include <bits.h>
 #include <string>
 #include <iostream>
-#include "Doctor.h"
-#include "Student.h"
-#include "Course.h"
-#include "Assignment.h"
+#include "../include/Doctor.h"
+#include "../include/Student.h"
+#include "../include/Course.h"
+#include "../include/Assignment.h"
 
 
 
@@ -16,36 +16,47 @@ Doctor::Doctor(string userName , string firstName , string lastName, string emai
 
 Doctor::Doctor(){}
 Doctor::~Doctor(){}
-void Doctor::createCourse(string code,string name){
+/*****************************Create Course Method ***************************/
+Course* Doctor::createCourse(string code,string name){
     string teacher = this->_lastName;
-    Course newCourse = Course(code,name,teacher);
+    Course* newCourse = new Course(code,name,teacher);
     this->myCourses.push_back(newCourse);
+    return newCourse;
     
 }
+/***************************List Courses Method ******************************/
 void Doctor::listCourses(){
     cout<<"My courses list:\n";
     string courseName,courseCode;
     for(int i=0;i<this->myCourses.size();i++)
     {
-        courseName = myCourses[i].getName();
-        courseCode = myCourses[i].getCode();
+        courseName = myCourses[i]->getName();
+        courseCode = myCourses[i]->getCode();
         cout<<i<<") "<<courseName<<" - code "<<courseCode<<"\n";
     }
 }
-
-void Doctor::createAssignment(string assignmentQ, Course course)
+/*************************Create Assignment Method *************************/
+void Doctor::createAssignment(string assignmentQ, Course* course)
 {
-    Assignment newAssignment = Assignment(assignmentQ);
-    course.allAssignments.push_back(newAssignment);
+    Assignment* newAssignment = new Assignment(assignmentQ);
+    vector<Assignment*>& allAssignments = course->getAssignments();
+    allAssignments.push_back(newAssignment);
+    cout<<"new assignment: "<<newAssignment->getAssignment()<<" is created in course: "<<course->getName()<<"\n";
 
 }
-void Doctor::viewAssignment(Course course)
+/*********************View Assignment Method *****************************/
+void Doctor::viewAssignment(Course* course)
 {
     string assignment;
-    for(int i=0;i<course.allAssignments.size();i++)
+    vector<Assignment*>& allAssignments=course->getAssignments();
+    for(int i=0;i<allAssignments.size();i++)
     {
-        assignment = course.allAssignments[i].getAssignment();
+        assignment = allAssignments[i]->getAssignment();
         cout<<assignment<<"\n";
     }
+}
+/*********************View Course Method  ***********************************/
+void Doctor::viewCourse(Course* course){
+    course->getCourseDetails();
 }
 
