@@ -36,13 +36,13 @@ void Doctor::listCourses(){
     }
 }
 /*************************Create Assignment Method *************************/
-void Doctor::createAssignment(string assignmentQ, Course* course)
+Assignment* Doctor::createAssignment(string assignmentQ, Course* course)
 {
     Assignment* newAssignment = new Assignment(assignmentQ);
     vector<Assignment*>& allAssignments = course->getAssignments();
     allAssignments.push_back(newAssignment);
     cout<<"new assignment: "<<newAssignment->getAssignment()<<" is created in course: "<<course->getName()<<"\n";
-
+    return newAssignment;
 }
 /*********************View Assignment Method *****************************/
 void Doctor::viewAssignment(Course* course)

@@ -1,11 +1,13 @@
 #include "bits.h"
 #include <string>
 #include "Course.h"
+#include "Assignment.h"
 #include <vector>
 
 using namespace std;
 
-
+#ifndef DOCTOR_H
+#define DOCTOR_H
 class Doctor {
 
     private: 
@@ -24,7 +26,7 @@ class Doctor {
         void listCourses();
         void viewCourse(Course*);
         //void addTA();
-        void createAssignment(string assignmentQ, Course* course);
+        Assignment* createAssignment(string assignmentQ, Course* course);
         void viewAssignment(Course* course);
         //void setGrade();
 
@@ -38,3 +40,4 @@ class Doctor {
 
 
 };
+#endif

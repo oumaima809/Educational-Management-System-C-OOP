@@ -14,6 +14,7 @@ Course::~Course(){
             delete assignment; 
             cout<<"assignment deleted";
         }
+  
 }
 string Course::getName(){
   return _name;

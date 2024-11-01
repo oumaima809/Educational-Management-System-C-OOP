@@ -11,6 +11,7 @@ class Assignment{
        string _assignmentQ;
        string _assignmentA;
        double _grade;
+       
 
 
     public:
